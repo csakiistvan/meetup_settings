@@ -1,0 +1,8 @@
+type:
+  title: Type
+  type: select
+  empty_value: ''
+  options:
+    primary: Primary
+    secondary: Secondary
+    danger: Danger

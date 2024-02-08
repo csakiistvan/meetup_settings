@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Includes all methods and hooks for the meetup_settings module.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+
+/**
+ * Implement hook_entity_base_field_info_alter().
+**/
+function meetup_settings_entity_base_field_info_alter(&$fields, EntityTypeInterface $entity_type) {
+  if ($entity_type->id() === 'menu_link_content') {
+    $fields['link']->setDisplayOptions('form', [
+      'type' => 'link_attributes',
+      'weight' => -2,
+      'settings' => [
+        'enabled_attributes' => [
+          'id' => FALSE,
+          'name' => FALSE,
+          'target' => TRUE,
+          'rel' => TRUE,
+          'class' => TRUE,
+          'accesskey' => FALSE,
+          // Add your own custom attributes as required.
+          'type' => TRUE,
+        ],
+      ],
+    ]);
+  }
+}
